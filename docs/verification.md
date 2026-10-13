@@ -1,6 +1,6 @@
 # 本地渲染核验
 
-核验日期：2026-10-12（Asia/Shanghai）。
+核验日期：2026-10-13（Asia/Shanghai）。
 
 - `npm run check` 通过，TypeScript 无错误。
 - 完整 Remotion H.264 渲染成功；输出 `out/claude-editing-motion.mp4`。

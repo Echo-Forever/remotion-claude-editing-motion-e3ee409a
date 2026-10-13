@@ -142,12 +142,12 @@ const Worker: React.FC<{t:number;frame:number}> = ({t,frame}) => {
  else if(t<11.4){x=205;tx=t<9.3?92:206;ty=143;extended=true;}
  else if(t<12.2){x=215;tx=225;ty=89;extended=true;}
  else if(t<14){x=190;}
- else if(t<15.3){x=250;happy=true;}
+ else if(t<15.3){x=315;y=385;happy=true;}
  else if(t<19.9){x=460;tx=1024+214*(t<17?.83:t<18?.22:.6);ty=t<17?154:t<18?215:276;extended=true;}
  else if(t<21.3){x=435;happy=true;}
  else if(t<23){x=750;y=540;happy=true;}
- else if(t<25.6){x=870;y=540;tx=1130;ty=t<24.1?32:336;extended=true;}
- else{x=1038;y=565;happy=true;}
+ else if(t<25.6){x=870;y=400;tx=1130;ty=t<24.1?32:336;extended=true;}
+ else{x=1038;y=400;happy=true;}
  const drags=[{a:2.05,b:2.7,x:91,y:144,end:145},{a:2.75,b:3.3,x:207,y:144,end:400},{a:3.35,b:3.85,x:91,y:235,end:680},{a:3.88,b:4.2,x:207,y:235,end:850}];
  const drag=drags.find(d=>t>=d.a&&t<d.b);
  if(drag){const p=tween(t,drag.a,drag.b);tx=drag.x+(drag.end-drag.x)*p;ty=drag.y+(492-drag.y)*p;extended=true;}
@@ -158,6 +158,7 @@ const Worker: React.FC<{t:number;frame:number}> = ({t,frame}) => {
   {t>=1.95&&t<2.45&&<Bubble x={x-9} y={y-81} w={109}>开工!</Bubble>}
   {t>=5.25&&t<6.75&&<Bubble x={x+150} y={y-35} w={165} size={23}>这段在发呆 zzz</Bubble>}
   {t>=7.2&&t<7.8&&<Bubble x={x+92} y={y-66} w={75}>删!</Bubble>}
+  {t>=14&&t<14.7&&<Bubble x={x-3} y={y-69} w={100}>撤销!</Bubble>}
   {t>=19.8&&t<20.6&&<Bubble x={x-2} y={y-82} w={90}>稳了</Bubble>}
  </g>;
 };
@@ -178,7 +179,7 @@ const Editor: React.FC<{t:number;frame:number}> = ({t,frame}) => {
  {t>=7.2&&t<7.85&&<g transform={`translate(${tween(t,7.2,7.7,600,1167)} ${tween(t,7.2,7.7,506,605)}) rotate(${linear(t,7.2,7.7,0,155)})`}><rect x="-45" y="-25" width="90" height="50" fill="#98968e" stroke={ink} strokeWidth="2"/><Txt x={0} y={9} size={23} fill="#d5d1c6" anchor="middle">Z Z Z</Txt></g>}
  {t>=7.2&&t<8&&<g><path d="M1190 603h35l-4 44h-28Z M1184 599h47 M1200 590h15" fill="#ebe7dc" stroke={ink} strokeWidth="2"/><Txt x={1180} y={587} size={31} fill={red} anchor="middle">删!</Txt></g>}
  {t>=11.15&&t<12&&Array.from({length:14},(_,i)=><Star key={i} x={650+Math.cos(i*1.7)*linear(t,11.15,12,8,110)} y={505+Math.sin(i*1.7)*linear(t,11.15,12,8,75)} r={4+i%3} fill={['#edcf77','#cf819e','#bfdbc9'][i%3]}/>)}
- {t>=14&&t<14.7&&<g transform={`translate(177 550) rotate(-3)`}><Box x={0} y={0} w={196} h={126} fill="#fffaf0" r={10}/><path d="M0 21H196 M15 0v21 M36 0v21 M57 0v21 M78 0v21 M99 0v21 M120 0v21 M141 0v21 M162 0v21 M183 0v21" stroke={ink} strokeWidth="2"/><text x="98" y="88" textAnchor="middle" fontFamily="Arial" fontSize="42" fill={ink} fontWeight="bold">Ctrl+Z</text></g>}
+ {t>=14&&t<14.7&&<g transform={`translate(297 440) rotate(-3)`}><Box x={0} y={0} w={196} h={126} fill="#fffaf0" r={10}/><path d="M0 21H196 M15 0v21 M36 0v21 M57 0v21 M78 0v21 M99 0v21 M120 0v21 M141 0v21 M162 0v21 M183 0v21" stroke={ink} strokeWidth="2"/><text x="98" y="88" textAnchor="middle" fontFamily="Arial" fontSize="42" fill={ink} fontWeight="bold">Ctrl+Z</text></g>}
  {t>=14.6&&t<15.4&&<g transform="translate(790 220) rotate(-11)"><rect x="0" y="0" width="140" height="57" rx="6" fill="none" stroke="#6ba47b" strokeWidth="2"/><rect x="5" y="5" width="130" height="47" rx="4" fill="none" stroke="#6ba47b"/><Txt x={70} y={41} size={35} fill="#6ba47b" anchor="middle">已修正</Txt></g>}
  {t>=16.9&&t<18.1&&<g><text x="657" y="160" textAnchor="middle" fontFamily={hand} fontSize="41" fontWeight="bold" fill="#ef6cac" stroke={ink} strokeWidth="3" paintOrder="stroke">饱和度:拉满</text><Bubble x={450} y={343} w={145} size={22}>……太亮了</Bubble></g>}
  {t>=21&&t<22.4&&<text x="686" y="660" textAnchor="middle" fill="#69b5a6" fontFamily={hand} fontWeight="bold" stroke={ink} strokeWidth="2.5" paintOrder="stroke" fontSize="38">卡点！</text>}
