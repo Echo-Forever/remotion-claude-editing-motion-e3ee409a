@@ -2,10 +2,12 @@
   "name": "claude-editing-motion-remotion",
   "version": "1.0.0",
   "private": true,
+  "license": "MIT",
   "description": "A hand-drawn editing workflow recreated with Remotion and SVG",
   "scripts": {
     "start": "remotion studio src/index.ts",
     "check": "tsc --noEmit",
+    "smoke": "node scripts/smoke.mjs",
     "render": "remotion render src/index.ts ClaudeEditingMotion out/claude-editing-motion.mp4 --codec=h264 --crf=18 --concurrency=4",
     "still": "remotion still src/index.ts ClaudeEditingMotion out/still.png --frame=885",
     "verify": "node scripts/verify-output.mjs"
